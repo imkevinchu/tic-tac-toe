@@ -11,7 +11,7 @@ const gameBoard = (() => {
     [" ", " ", " "],
   ];
 
-  let gameOver = false;
+  let isGameOver = false;
 
   const playerO = playerCreator("Player 1", "O");
   const playerX = playerCreator("Player 2", "X");
@@ -31,7 +31,7 @@ const gameBoard = (() => {
           let tile = document.getElementById(r.toString() + "-" + i.toString());
           tile.classList.add("winner");
         }
-        gameController.setGameOver;
+        isGameOver = true;
         return;
       }
     }
@@ -49,7 +49,7 @@ const gameBoard = (() => {
           let tile = document.getElementById(i.toString() + "-" + c.toString());
           tile.classList.add("winner");
         }
-        gameOver = true;
+        isGameOver = true;
         return;
       }
     }
@@ -64,7 +64,7 @@ const gameBoard = (() => {
         let tile = document.getElementById(i.toString() + "-" + i.toString());
         tile.classList.add("winner");
       }
-      gameOver = true;
+      isGameOver = true;
       return;
     }
 
@@ -85,7 +85,7 @@ const gameBoard = (() => {
       //2-0
       tile = document.getElementById("2-0");
       tile.classList.add("winner");
-      gameOver = true;
+      isGameOver = true;
       return;
     }
   };
@@ -93,7 +93,7 @@ const gameBoard = (() => {
   function setTile() {
     console.log("click");
 
-    if (gameOver) {
+    if (isGameOver) {
       return;
     }
 
