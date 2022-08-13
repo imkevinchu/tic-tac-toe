@@ -9,6 +9,14 @@ hr {
   background-color: black;
 }
 
+.referee {
+  font-size: large;
+}
+
+.referee span {
+  font-weight: bold;
+}
+
 .board {
   width: 600px;
   height: 600px;

@@ -1,14 +1,14 @@
-// const playerCreator = () => {
-//   return {};
-// };
+const playerCreator = () => {
+  return {};
+};
 
-// const gameBoard = (() => {
-//   const checkGameOver = () => {};
-//   return {};
-// })();
+const gameBoard = (() => {
+  const checkGameOver = () => {};
+  return {};
+})();
 
-// const displayController = (() => {
-//   return {};
-// })();
+const displayController = (() => {
+  return {};
+})();
 
 window.onload = () => {};
