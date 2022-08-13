@@ -114,20 +114,19 @@ const gameBoard = (() => {
 
     console.log(currPlayer);
 
-    let coords = this.id.split("-"); //ex) "1-2" -> ["1", "2'"]
+    let coords = this.id.split("-"); //ex) "1-2" -> ["1", "2"]
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
 
+    // if already taken
     if (board[r][c] != " ") {
-      //already taken spot
       return;
     }
 
-    board[r][c] = currPlayer.sign; //mark the board
+    board[r][c] = currPlayer.sign; // mark the board array
     this.innerText = currPlayer.sign; //mark the board on html
 
     const switchCurrPlayer = () => {
-      //change players
       if (currPlayer == playerO) {
         currPlayer = playerX;
       } else {
@@ -139,6 +138,7 @@ const gameBoard = (() => {
     checkWinner();
   }
 
+  // draw gameboard
   for (let r = 0; r < 3; r++) {
     for (let c = 0; c < 3; c++) {
       let tile = document.createElement("div");
