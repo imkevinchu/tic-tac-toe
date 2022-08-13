@@ -2,23 +2,6 @@ const playerCreator = (name, sign) => {
   return { name, sign };
 };
 
-const gameController = (() => {
-  let gameOver = false;
-
-  const isGameOver = () => {
-    gameOver;
-  };
-
-  const setGameOver = () => {
-    gameOver = true;
-  };
-
-  return {
-    isGameOver,
-    setGameOver,
-  };
-})();
-
 const gameBoard = (() => {
   let board = [];
 
@@ -27,6 +10,8 @@ const gameBoard = (() => {
     [" ", " ", " "],
     [" ", " ", " "],
   ];
+
+  let gameOver = false;
 
   const playerO = playerCreator("Player 1", "O");
   const playerX = playerCreator("Player 2", "X");
@@ -64,7 +49,7 @@ const gameBoard = (() => {
           let tile = document.getElementById(i.toString() + "-" + c.toString());
           tile.classList.add("winner");
         }
-        gameController.setGameOver;
+        gameOver = true;
         return;
       }
     }
@@ -79,7 +64,7 @@ const gameBoard = (() => {
         let tile = document.getElementById(i.toString() + "-" + i.toString());
         tile.classList.add("winner");
       }
-      gameController.setGameOver;
+      gameOver = true;
       return;
     }
 
@@ -100,7 +85,7 @@ const gameBoard = (() => {
       //2-0
       tile = document.getElementById("2-0");
       tile.classList.add("winner");
-      gameController.setGameOver;
+      gameOver = true;
       return;
     }
   };
@@ -108,9 +93,9 @@ const gameBoard = (() => {
   function setTile() {
     console.log("click");
 
-    // if (gameController.isGameOver) {
-    //   return;
-    // }
+    if (gameOver) {
+      return;
+    }
 
     console.log(currPlayer);
 
