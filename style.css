@@ -17,7 +17,7 @@ hr {
   font-weight: bold;
 }
 
-.board {
+.gameboard {
   width: 600px;
   height: 600px;
   background-color: lightgray;
@@ -33,6 +33,11 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.tile:hover {
+  cursor: pointer;
+  background-color: darkgray;
 }
 
 .horizontal {
