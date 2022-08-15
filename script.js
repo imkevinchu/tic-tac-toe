@@ -36,6 +36,7 @@ const gameBoard = (() => {
           tile.classList.add("winner");
         }
         isGameOver = true;
+        referee.innerHTML = "Game over.";
         return;
       }
     }
@@ -54,6 +55,7 @@ const gameBoard = (() => {
           tile.classList.add("winner");
         }
         isGameOver = true;
+        referee.innerHTML = "Game over.";
         return;
       }
     }
@@ -69,6 +71,7 @@ const gameBoard = (() => {
         tile.classList.add("winner");
       }
       isGameOver = true;
+      referee.innerHTML = "Game over.";
       return;
     }
 
@@ -90,6 +93,7 @@ const gameBoard = (() => {
       tile = document.getElementById("2-0");
       tile.classList.add("winner");
       isGameOver = true;
+      referee.innerHTML = "Game over.";
       return;
     }
   };
