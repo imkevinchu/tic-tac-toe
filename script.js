@@ -21,6 +21,11 @@ const gameBoard = (() => {
   let referee = document.querySelector(".referee");
   let player = document.querySelector(".player");
 
+  const gameOver = () => {
+    isGameOver = true;
+    referee.innerHTML = "Game over.";
+  };
+
   const checkWinner = () => {
     // horizontally, check 3 rows
     for (let r = 0; r < 3; r++) {
@@ -35,8 +40,7 @@ const gameBoard = (() => {
           let tile = document.getElementById(r.toString() + "-" + i.toString());
           tile.classList.add("winner");
         }
-        isGameOver = true;
-        referee.innerHTML = "Game over.";
+        gameOver();
         return;
       }
     }
@@ -54,8 +58,7 @@ const gameBoard = (() => {
           let tile = document.getElementById(i.toString() + "-" + c.toString());
           tile.classList.add("winner");
         }
-        isGameOver = true;
-        referee.innerHTML = "Game over.";
+        gameOver();
         return;
       }
     }
@@ -70,8 +73,7 @@ const gameBoard = (() => {
         let tile = document.getElementById(i.toString() + "-" + i.toString());
         tile.classList.add("winner");
       }
-      isGameOver = true;
-      referee.innerHTML = "Game over.";
+      gameOver();
       return;
     }
 
@@ -92,20 +94,15 @@ const gameBoard = (() => {
       // 2-0
       tile = document.getElementById("2-0");
       tile.classList.add("winner");
-      isGameOver = true;
-      referee.innerHTML = "Game over.";
+      gameOver();
       return;
     }
   };
 
   function setTile() {
-    console.log("click");
-
     if (isGameOver) {
       return;
     }
-
-    console.log(currPlayer);
 
     let coords = this.id.split("-"); // "1-2" -> ["1", "2"]
     let r = parseInt(coords[0]);
@@ -133,23 +130,24 @@ const gameBoard = (() => {
     checkWinner();
   }
 
-  // draw gameboard
-  for (let r = 0; r < 3; r++) {
-    for (let c = 0; c < 3; c++) {
-      let tile = document.createElement("div");
-      tile.id = r.toString() + "-" + c.toString();
-      tile.classList.add("tile");
-      if (r == 0 || r == 1) {
-        tile.classList.add("horizontal");
+  const drawBoard = (() => {
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        let tile = document.createElement("div");
+        tile.id = r.toString() + "-" + c.toString();
+        tile.classList.add("tile");
+        if (r == 0 || r == 1) {
+          tile.classList.add("horizontal");
+        }
+        if (c == 0 || c == 1) {
+          tile.classList.add("vertical");
+        }
+        tile.innerText = "";
+        tile.addEventListener("click", setTile);
+        document.getElementById("gameboard").appendChild(tile);
       }
-      if (c == 0 || c == 1) {
-        tile.classList.add("vertical");
-      }
-      tile.innerText = "";
-      tile.addEventListener("click", setTile);
-      document.getElementById("gameboard").appendChild(tile);
     }
-  }
+  })();
 
   return { board };
 })();
