@@ -26,6 +26,16 @@ const gameBoard = (() => {
     referee.innerHTML = "Game over.";
   };
 
+  const switchCurrPlayer = () => {
+    if (currPlayer == playerO) {
+      currPlayer = playerX;
+      player.innerHTML = "Player 2";
+    } else {
+      currPlayer = playerO;
+      player.innerHTML = "Player 1";
+    }
+  };
+
   const checkWinner = () => {
     // horizontally, check 3 rows
     for (let r = 0; r < 3; r++) {
@@ -115,16 +125,6 @@ const gameBoard = (() => {
 
     board[r][c] = currPlayer.sign; // mark the board array
     this.innerText = currPlayer.sign; // mark the board on html
-
-    const switchCurrPlayer = () => {
-      if (currPlayer == playerO) {
-        currPlayer = playerX;
-        player.innerHTML = "Player 2";
-      } else {
-        currPlayer = playerO;
-        player.innerHTML = "Player 1";
-      }
-    };
 
     switchCurrPlayer();
     checkWinner();
